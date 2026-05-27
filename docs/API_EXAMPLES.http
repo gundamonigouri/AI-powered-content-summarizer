@@ -1,0 +1,50 @@
+### AI Content Summarizer - API Examples
+### Use with VS Code REST Client extension or import into Postman
+
+@baseUrl = http://localhost:5000/api
+
+### Health Check
+GET {{baseUrl}}/health
+
+### Summarize Text
+POST {{baseUrl}}/summarize/text
+Content-Type: application/json
+
+{
+  "text": "Climate change refers to long-term shifts in temperatures and weather patterns. Human activities have been the main driver of climate change, primarily due to the burning of fossil fuels.",
+  "title": "Climate Overview",
+  "summaryType": "bullets",
+  "length": "short"
+}
+
+### Summarize URL
+POST {{baseUrl}}/summarize/url
+Content-Type: application/json
+
+{
+  "url": "https://en.wikipedia.org/wiki/Machine_learning",
+  "summaryType": "short",
+  "length": "medium"
+}
+
+### Summarize PDF (replace path with your file)
+# POST {{baseUrl}}/summarize/file
+# Content-Type: multipart/form-data
+# file=@./sample.pdf
+# summaryType=detailed
+# length=long
+
+### Get History
+GET {{baseUrl}}/history?limit=20
+
+### Semantic Search
+POST {{baseUrl}}/search
+Content-Type: application/json
+
+{
+  "query": "machine learning artificial intelligence",
+  "topK": 5
+}
+
+### Delete History Item
+# DELETE {{baseUrl}}/history/your-record-id-here
