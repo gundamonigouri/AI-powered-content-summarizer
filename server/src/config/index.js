@@ -2,7 +2,8 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const required = ['GROQ_API_KEY', 'PINECONE_API_KEY', 'OPENAI_API_KEY'];
+// Only Groq API key is strictly required for core summarization functionality.
+const required = ['GROQ_API_KEY'];
 
 const missing = required.filter((key) => !process.env[key]);
 if (missing.length > 0) {
